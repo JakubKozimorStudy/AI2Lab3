@@ -1,51 +1,32 @@
-def print_two(a, b):
-    print("Arguments: {0} and {1}".format(a, b))
+def keyword_args(a, b=1, c='X', d=None):
+    print("a:", a)
+    print("b:", b)
+    print("c:", c)
+    print("d:", d)
 
+
+keyword_args(5)
+keyword_args(a=5)
+keyword_args(5, 8)
+keyword_args(5, 2, c=4)
+keyword_args(5, 0, 1)
+keyword_args(5, 2, d=8, c=4)
 try:
-    print_two(4, 1, b=1)
+    keyword_args(5, 2, 0, 1, "")
 except TypeError:
-    print("Wrong type")
+    print("TypeError")
 try:
-    print_two(1, a=1)
-except TypeError:
-    print("Wrong type")
-try:
-    print_two(b=1, a=4)
-except TypeError:
-    print("Wrong type")
-try:
-    print_two(a=4, b=1)
-except TypeError:
-    print("Wrong type")
-try:
-    print_two(eval('b=4, 1'))
+    keyword_args(eval('c=7, 1'))
 except SyntaxError:
-    print("Wrong syntax")
+    print("SyntaxError")
+keyword_args(c=7, a=1)
+keyword_args(5, 2, [], 5)
 try:
-    print_two(4, a=1)
+    keyword_args(1, 7, e=6)
 except TypeError:
-    print("Wrong type")
+    print("TypeError")
+keyword_args(1, c=7)
 try:
-    print_two(4, 1, 1)
+    keyword_args(5, 2, b=4)
 except TypeError:
-    print("Wrong type")
-try:
-    print_two(4, a=1)
-except TypeError:
-    print("Wrong type")
-try:
-    eval('print_two(a=4, 1)')
-except SyntaxError:
-    print("Wrong syntax")
-try:
-    print_two(41)
-except TypeError:
-    print("Wrong type")
-try:
-    print_two(4,1)
-except TypeError:
-    print("Wrong type")
-try:
-    print_two()
-except TypeError:
-    print("Wrong type")
+    print("TypeError")
