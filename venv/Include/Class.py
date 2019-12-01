@@ -1,32 +1,21 @@
-def keyword_args(a, b=1, c='X', d=None):
-    print("a:", a)
-    print("b:", b)
-    print("c:", c)
-    print("d:", d)
+def variadic(*args, **kwargs):
+    print("Positional:", args)
+    print("Keyword:", kwargs)
 
-
-keyword_args(5)
-keyword_args(a=5)
-keyword_args(5, 8)
-keyword_args(5, 2, c=4)
-keyword_args(5, 0, 1)
-keyword_args(5, 2, d=8, c=4)
+variadic(2, 3, 5, 7)
+variadic(1, 1, n=1)
 try:
-    keyword_args(5, 2, 0, 1, "")
-except TypeError:
-    print("TypeError")
-try:
-    keyword_args(eval('c=7, 1'))
+    variadic(eval('n=1, 2, 3'))
 except SyntaxError:
     print("SyntaxError")
-keyword_args(c=7, a=1)
-keyword_args(5, 2, [], 5)
+variadic()
+variadic(cs="Computer Science", pd="Product Design")
 try:
-    keyword_args(1, 7, e=6)
-except TypeError:
-    print("TypeError")
-keyword_args(1, c=7)
-try:
-    keyword_args(5, 2, b=4)
-except TypeError:
-    print("TypeError")
+    variadic(eval('cs="Computer Science", cs="CompSci", cs="CS"'))
+except SyntaxError:
+    print("SyntaxError")
+variadic(5, 8, k=1, swap=2)
+variadic(8, *[3, 4, 5], k=1, **{'a':5, 'b':'x'})
+variadic(*[8, 3], *[4, 5], k=1, **{'a':5, 'b':'x'})
+variadic(*[3, 4, 5], 8, *(4, 1), k=1, **{'a':5, 'b':'x'})
+variadic({'a':5, 'b':'x'}, *{'a':5, 'b':'x'}, **{'a':5, 'b':'x'})
