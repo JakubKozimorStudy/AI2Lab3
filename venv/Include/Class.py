@@ -1,47 +1,30 @@
-def all_together(x, y, z=1, *nums, indent=True, spaces=4, **options):
-    print("x:", x)
-    print("y:", y)
-    print("z:", z)
-    print("nums:", nums)
-    print("indent:", indent)
-    print("spaces:", spaces)
-    print("options:", options)
+def speak_excitedly(message, exclamations=1, capitalize=False):
+    message += '!' * exclamations
+    if capitalize:
+        return message.upper()
+    return message
 
 
-try:
-    all_together(2)
-except TypeError:
-    print("TypeError")
-all_together(2, 5, 7, 8, indent=False)
-all_together(2, 5, 7, 6, indent=None)
-try:
-    all_together()
-except TypeError:
-    print("TypeError")
-try:
-    all_together(eval('indent=True, 3, 4, 5'))
-except SyntaxError:
-    print("SyntaxError")
-try:
-    all_together(**{'indent': False}, scope='maximum')
-except TypeError:
-    print("TypeError")
-all_together(dict(x=0, y=1), *range(10))
-try:
-    all_together(eval('**dict(x=0, y=1), *range(10)'))
-except SyntaxError:
-    print("SyntaxError")
-try:
-    all_together(*range(10), **dict(x=0, y=1))
-except TypeError:
-    print("TypeError")
-try:
-    all_together([1, 2], {3: 4})
-except TypeError:
-    print("TypeError")
-try:
-    all_together(8, 9, 10, *[2, 4, 6], x=7, spaces=0, **{'a': 5, 'b': 'x'})
-except TypeError:
-    print("TypeError")
-all_together(8, 9, 10, *[2, 4, 6], spaces=0, **{'a': [4, 5], 'b': 'x'})
-all_together(8, 9, *[2, 4, 6], *dict(z=1), spaces=0, **{'a': [4, 5], 'b': 'x'})
+message = "I love Python"
+message1 = "Keyword arguments are great"
+message2 = "I guess Java is okay..."
+message3 = "Let's go Stanford"
+
+print(speak_excitedly(message=message, exclamations=1, capitalize=False))
+print(speak_excitedly(message=message1, exclamations=4, capitalize=False))
+print(speak_excitedly(message=message2, exclamations=0, capitalize=False))
+print(speak_excitedly(message=message3, exclamations=2, capitalize=True))
+
+#Averdage
+print("\n")
+
+def average(*n):
+    if n:
+        return sum(n) / n.__len__();
+    else:
+        return None
+
+
+print(average())
+print(average(5))
+print(average(6, 8, 9, 11))
