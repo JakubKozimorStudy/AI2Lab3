@@ -1,30 +1,22 @@
-def speak_excitedly(message, exclamations=1, capitalize=False):
-    message += '!' * exclamations
-    if capitalize:
-        return message.upper()
-    return message
+def say_hello():
+    print("Hello!")
 
+print(say_hello())  # => Hello None
 
-message = "I love Python"
-message1 = "Keyword arguments are great"
-message2 = "I guess Java is okay..."
-message3 = "Let's go Stanford"
+def echo(arg=None):
+    print("arg:", arg)
+    return arg
 
-print(speak_excitedly(message=message, exclamations=1, capitalize=False))
-print(speak_excitedly(message=message1, exclamations=4, capitalize=False))
-print(speak_excitedly(message=message2, exclamations=0, capitalize=False))
-print(speak_excitedly(message=message3, exclamations=2, capitalize=True))
+print(echo())  # => arg: None None
+print(echo(5)) # => arg: 5 5
+print(echo("Hello")) # => arg: Hello Hello
 
-#Averdage
-print("\n")
+def drive(has_car):
+    if not has_car:
+        return
+    return 100  # miles
 
-def average(*n):
-    if n:
-        return sum(n) / n.__len__();
-    else:
-        return None
-
-
-print(average())
-print(average(5))
-print(average(6, 8, 9, 11))
+drive(False)  # =>
+drive(True)   # =>
+print(drive(False))  # => None
+print(drive(True))   # => 100
